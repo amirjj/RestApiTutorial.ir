@@ -76,16 +76,16 @@
 		<div class="container">
             <div class="row">
                 <div class="span12 banner-container">
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- Rest API Tutorial -->
-					<ins class="adsbygoogle"
-						 style="display:block"
-						 data-ad-client="ca-pub-2093481943685202"
-						 data-ad-slot="4845828438"
-						 data-ad-format="auto"></ins>
-					<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
+					<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+					<!-- <!-- Rest API Tutorial --> -->
+					<!-- <ins class="adsbygoogle" -->
+						 <!-- style="display:block" -->
+						 <!-- data-ad-client="ca-pub-2093481943685202" -->
+						 <!-- data-ad-slot="4845828438" -->
+						 <!-- data-ad-format="auto"></ins> -->
+					<!-- <script> -->
+					<!-- (adsbygoogle = window.adsbygoogle || []).push({}); -->
+					<!-- </script> -->
                 </div>
             </div>
 			<div class="row">
@@ -97,7 +97,6 @@
 						<li>
 							<a href="../index.html"> خانه<i class="icon-step-backward"></i></a>
 						</li>
-						
 					</ul>
 				</div>
                 <div class="span8">
@@ -117,60 +116,59 @@
 			</div>
 			<div class="row">
 				<div class="span12">
-				
-					
 					<p style="text-align: justify;" dir="rtl">معماری REST شش محدودیت تعیین می کند. این محدودیت ها را اولین بار "روی فیلدینگ" در پایان نامه دکتری مطرح کرد (ل<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">ینک مقاله</a>). این محدودیت های اصول توسعه با روش RESTful می باشد.</p>
 					<p style="text-align: justify;" dir="rtl"><strong>این 6 محدودیت عبارتند از (برای دیدن توضیحات بر روی گزینه ها کلیک کنید):</strong></p>
-					
-					
 					<ul id="constraint-accordian">
 						<li><a data-toggle="collapse" data-target="#uniform-interface" data-parent="#constraint-accordian" href="#">رابط یکسان و هماهنگ</a>
 							<div class="collapse" id="uniform-interface">
 								<p style="text-align: justify;" dir="rtl">منظور رابط یکسان بین کلاینت و سرور است. این محدودیت معماری را ساده تر می کند و باعت می شود که کلاینت و سرور کاملا از هم جدا شوند و به صورت جداگانه توسعه داده شوند. برای برقراری این محدودیت باید چهار اصل زیر را رعایت کنیم:</p>
-
-								<h3>Resource-Based</h3>
-								<p>Individual resources are identified in requests using URIs as resource identifiers. The resources themselves are conceptually separate from the representations that are returned to the client. For example, the server does not send its database, but rather, some HTML, XML or JSON that represents some database records expressed, for instance, in Finnish and encoded in UTF-8, depending on the details of the request and the server implementation.</p>
-								<h3>Manipulation of Resources Through Representations</h3>
-								<p>When a client holds a representation of a resource, including any metadata attached, it has enough information to modify or delete the resource on the server, provided it has permission to do so.</p>
-								<h3>Self-descriptive Messages</h3>
-								<p>Each message includes enough information to describe how to process the message. For example, which parser to invoke may be specified by an Internet media type (previously known as a MIME type). Responses also explicitly indicate their cache-ability.</p>
-								<h3>Hypermedia as the Engine of Application State (HATEOAS)</h3>
-								<p>Clients deliver state via body contents, query-string parameters, request headers and the requested URI (the resource name).  Services deliver state to clients via body content, response codes, and response headers.  This is technically referred-to as hypermedia (or hyperlinks within hypertext).</p>
-								<p>Aside from the description above, HATEOS also means that, where necessary, links are contained in the returned body (or headers) to supply the URI for retrieval of the object itself or related objects.  We'll talk about this in more detail later.</p>
-								<p>The uniform interface that any REST services must provide is fundamental to its design.</p>
+								<h3>بر اساس منابع (resource-based)</h3>
+								<p dir="RTL">&nbsp;</p>
+								<p dir="RTL">هر منبع با استفاده از URI قابل تشخص خواهد بود. به صورت مفهومی منبع با چیزی که به کلاینت نمایش داده می شود (representation) می تواند تفاوت داشته باشد. مثلا اگر کلاینت از سرور درخواست یک رکورد از دیتابیس را داشته باشد، سرور آن رکورد را مستقیم برای کلاینت ارسال نمی کند بلکه آن را در فرمت هایی مثل XML یا JSON به کلاینت ارسال می کند.</p>
+								<h3>تغییر منبع با استفاده از representation</h3>								
+								<p dir="RTL">&nbsp;</p>
+								<p dir="RTL">وقتی که اطلاعاتی با استفاده از representation به کلاینت داده می شود (شامل metadata)، کلاینت هر اطلاعاتی که برای تغییر یا حذف آن رکورد نیاز دارد را در اختیار دارد.</p>
+								<h3>پیام های توصیفی و شفاف (self-descriptive)</h3>
+								<p dir="RTL">&nbsp;</p>
+								<p dir="RTL">یک پیام Self-descriptive یعنی در خود آن پیام تمامی اطلاعات مهم نهفته است یعنی برای پردازش یک پیام هر اطلاعاتی که لازم باشد در همان پیام موجود است. مثلا اینکه چه پارسری نیاز باشد که استفاده کنیم در خود &nbsp;MIME type (<a href="https://stackoverflow.com/questions/3828352/what-is-a-mime-type">https://stackoverflow.com/questions/3828352/what-is-a-mime-type</a>) &nbsp;مشخص می گردد.</p>
+								<h3>هایپرمدیا به عنوان موتور وضعیتی Hypermedia as the Engine of Application State (HATEOAS)</h3>
+								<p dir="RTL">&nbsp;</p>
+								<p dir="RTL">کلاینت وضعیت را با استفاده از محتوای بدنه، پارامترهای query-string، هدر request و URI انتقال می دهد. سرویس وضعیت را با استفاده از محتوای بدنه، کد پاسخ (response code)، و هدر پاسخ انتقال می دهد. به این مفهوم هایپرمدیا می گویند (هایپرلینک در هایپرتکست).</p>
+								<p dir="RTL">علاوه بر تعریف بالا HATEOS یعنی در صورت نیاز برای تامین اطلاعات به URI برای استخراج یک منبع، لینک ها در داخل بدنه یا هدر قرار بدهیم.</p>
+								<p dir="RTL">رابط یکسان و هماهنگ یکی از اصول REST می باشد که باید در طراحی رعایت گردد.</p>
 							</div>
 						</li>
 						<li><a data-toggle="collapse" data-target="#stateless" data-parent="#constraint-accordian" href="#">فاقد حالت یا وضعیت (stateless)</a>
 							<div class="collapse" id="stateless">
-								<p>As REST is an acronym for REpresentational State Transfer, statelessness is key.  Essentially, what this means is that the necessary state to handle the request is contained within the request itself, whether as part of the URI, query-string parameters, body, or headers.  The URI uniquely identifies the resource and the body contains the state (or state change) of that resource.  Then after the server does it's processing, the appropriate state, or the piece(s) of state that matter, are communicated back to the client via headers, status and response body.</p>
-								<p>Most of us who have been in the industry for a while are accustomed to programming within a container which provides us with the concept of “session” which maintains state across multiple HTTP requests.  In REST, the client must include all information for the server to fulfill the request, resending state as necessary if that state must span multiple requests.  Statelessness enables greater scalability since the server does not have to maintain, update or communicate that session state.  Additionally, load balancers don't have to worry about session affinity for stateless systems.</p>
-								<p>So what's the difference between state and a resource?  State, or application state, is that which the server cares about to fulfill a request—data necessary for the current session or request.  A resource, or resource state, is the data that defines the resource representation—the data stored in the database, for instance.  Consider application state to be data that could vary by client, and per request.  Resource state, on the other hand, is constant across every client who requests it.</p>
-								<p>Ever had back-button issues with a web application where it went AWOL at a certain point because it expected you to do things in a certain order?  That's because it violated the statelessness principle. There are cases that don't honor the statelessness principle, such as three-legged OAuth, API call rate limiting, etc.  However, make every effort to ensure that application state doesn't span multiple requests of your service(s).</p>
+								<p dir="RTL">REST مخفف عبارت Representational State Transfer می باشد. Stateless بودن جز اصلی ترین خصوصیات REST است بگونه ای که اگر لازم باشد وضعیت کلاینت نگهداری شود اطلاعات آن در خود request خواهد بود مثلا در URI، query-string، بدنه یا هدر. URI مشخصه منبع (آدرس رکوردی که درخواست می شود) را نگهداری می کند و وضعیت (تغییر وضعیت) منبع در بدنه (Body) نگهداری می شود. سپس بعد از پردازش این درخواست توسط سرور، state در پاسخ توسط هدر، status یا بدنه پاسخ به کلاینت داده می شود.</p>
+								<p dir="RTL">برای کسانی که سال ها در صنعت نرم افزار فعالیت کرده اند نگهداری state توسط session در تعداد زیادی از درخواست های HTTP امری جدید نیست. در REST اگر قرار باشد که state ای نگهداری شود، همه اطلاعات سمت کلاینت نگهداری می شود و در هر درخواست HTTP این اطلاعات را باید برای سرور ارسال کند. Stateless بودن امکان توسعه پذیری نرم افزار را به شدت افزایش می دهد چرا که دیگر سرور نیازی ندارد که اطلاعات session را نگه دارد و مدیریت کند. علاوه بر آن دیگر load balancer ها در سیستم های stateless نگران وابستگی های session ها نخواهند بود.</p>
+								<p dir="RTL">تفاوت resource و state چیست؟ state چیزی است که برای سرور در مدیریت یک request مهم است مثل اطلاعات لازم در یک session. Resource همان داده ای است که در دیتابیس ذخیره شده است و بعد از یک request به صورت یک representation به کلاینت نشان داده می شود. State اطلاعاتی است که در هر request و برای هر کاربر می تواند متفاوت باشد. Resource اما داده ای است که در دیتابیس وجود دارد و هر کلاینت می تواند آن را درخواست کند.</p>				
 							</div>
 						</li>
 						<li><a data-toggle="collapse" data-target="#cacheable" data-parent="#constraint-accordian" href="#">قابل کش شدن (cacheable)</a>
 							<div class="collapse" id="cacheable">
-								<p>As on the World Wide Web, clients can cache responses. Responses must therefore, implicitly or explicitly, define themselves as cacheable, or not, to prevent clients reusing stale or inappropriate data in response to further requests. Well-managed caching partially or completely eliminates some client–server interactions, further improving scalability and performance.</p>
+								<p dir="RTL">یکی از قابلیت های وب قابلیت cache شدن است، کلاینت ها داده های پرکاربرد را cache می کنند بنابراین در response ها باید تعریف شود که اطلاعات این response بهتر است cache شود یا نه (بر اساس اهمیت و تکرار یک داده). همچنین مدیریت درست قابلیت cache شدن به صورتی که داده های غیرمهم را cache نکنیم یا اصلا قابلیت cache شدن را برداریم خودش به توسعه پذیری و کارایی سیستم کمک می کند.</p>
 							</div>
 						</li>
 						<li><a data-toggle="collapse" data-target="#client-server" data-parent="#constraint-accordian" href="#">کلاینت-سرور</a>
 							<div class="collapse" id="client-server">
-								<p>The uniform interface separates clients from servers. This separation of concerns means that, for example, clients are not concerned with data storage, which remains internal to each server, so that the portability of client code is improved. Servers are not concerned with the user interface or user state, so that servers can be simpler and more scalable. Servers and clients may also be replaced and developed independently, as long as the interface is not altered.</p>
+								<p dir="RTL">رابط یکسان (uniform interface) باعث استقلال کلاینت و سرور می شود. Separation of concerns مفهومی است به این معنی که با جداسازی هرچه بیشتر کلاینت و سرور بسیاری از مشکلات حل می شوند مثلا اینکه کلاینت دیگر دغدغه گرفتن داده از دیتابیس را ندارد و این قابلیت را به کلاینت می دهد که مستقل رشد کند و کار با دیتابیس محدود به سرور شود در عوض سرور اهمیتی به رابط کاربری یا وضعیت کاربر نیست بنابراین سرور ساده تر و توسعه پذیرتر می شود. حتی کلاینت یا سرور را می توان به راحتی با کلاینت یا سروری دیگر جاگزین کرد بدون اینکه در کارکرد دیگری اختلالی ایجاد شود.</p>
 							</div>
 						</li>
 						<li><a data-toggle="collapse" data-target="#layered-system" data-parent="#constraint-accordian" href="#">سیستم لایه ای</a>
 							<div class="collapse" id="layered-system">
-								<p>A client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way. Intermediary servers may improve system scalability by enabling load-balancing and by providing shared caches. Layers may also enforce security policies.</p>
+								<p dir="RTL">به صورت کلی کلاینت نمی داند که به سرور نهای متصل شده یا به یک سرور میانی. سیستم های میانی می تواند load balancer باشند یا سروری مخصوص cache اشتراکی باشند. این معماری شاید جهت افزایش امنیت تعریف گردند.</p>
 							</div>
 						</li>
 						<li><a data-toggle="collapse" data-target="#code-on-demand" data-parent="#constraint-accordian" href="#">Code on Demand (optional)</a>
 							<div class="collapse" id="code-on-demand">
-								<p>Servers are able to temporarily extend or customize the functionality of a client by transferring logic to it that it can execute. Examples of this may include compiled components such as Java applets and client-side scripts such as JavaScript.</p>
-								<p>Complying with these constraints, and thus conforming to the REST architectural style, will enable any kind of distributed hypermedia system to have desirable emergent properties, such as performance, scalability, simplicity, modifiability, visibility, portability and reliability.</p>
-								<p><strong>NOTE:</strong> The only optional constraint of REST architecture is code on demand. If a service violates any other constraint, it cannot strictly be referred to as RESTful.</p>
+								<p dir="RTL">سرور می تواند گاهی به صورت موقتی بخشی از منطق برنامه را به کلاینت انتقال دهد مثل اسکریپت های جاوااسکریپت که در کلاینت اجرا می شوند.</p>
+								<p dir="RTL">اگر سیستم خود را با این محدودیت های تعریف شده در معماری REST پیاده سازی کنیم موجب می شود که این سیستم های توزیع شده دارای قابلیت های زیادی باشد مانند: قابلیت توسعه پذیری، بهبود کارایی، سادگی، شفافیت، قابلیت پرتابل بودن و قابلیت اطمینان.</p>
 							</div>
 						</li>
 					</ul>
+					<p dir="RTL">تنها محدودیت اختیاری در REST آیتم آخر یعنی code on demand است و اگر هر کدام دیگر از محدودیت ها رعایت نشود دیگه نمی توانیم به سیستم RESTful گفت.</p>
+
 					
 					
 					
