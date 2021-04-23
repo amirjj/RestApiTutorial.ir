@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>راهنمای سریع</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="RESTful API or Web Service Quick Tips. Want to learn the high points of creating a REST API? Here's the Web Services in 60-seconds version.">
+		<meta name="author" content="Todd Fredrich, Pearson eCollege">
+		<!-- Le styles -->
+		<link href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				direction: rtl;
+				text-align:right;
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+            .banner-container {
+            }
+			.navbar .nav>li {
+				display: block;
+				float: right;
+			}
+			.navbar .nav>ul {
+				display: block;
+				float: right;
+			}
+			@font-face {
+			   font-family: Sahel;
+			   src: url(../static/font/Sahel.woff);
+			}
+
+			* {
+			   font-family: Sahel;
+			}
+			.pager {
+				direction: rtl;
+			}
+		</style>
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!-- <script type="text/javascript"> -->
+
+		  <!-- var _gaq = _gaq || []; -->
+		  <!-- _gaq.push(['_setAccount', 'UA-31328878-1']); -->
+		  <!-- _gaq.push(['_trackPageview']); -->
+
+		  <!-- (function() { -->
+		    <!-- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; -->
+		    <!-- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; -->
+		    <!-- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); -->
+		  <!-- })(); -->
+
+		<!-- </script> -->
+		<!-- Facebook Pixel Code -->
+		<!-- <script> -->
+		  <!-- !function(f,b,e,v,n,t,s) -->
+		  <!-- {if(f.fbq)return;n=f.fbq=function(){n.callMethod? -->
+		  <!-- n.callMethod.apply(n,arguments):n.queue.push(arguments)}; -->
+		  <!-- if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; -->
+		  <!-- n.queue=[];t=b.createElement(e);t.async=!0; -->
+		  <!-- t.src=v;s=b.getElementsByTagName(e)[0]; -->
+		  <!-- s.parentNode.insertBefore(t,s)}(window, document,'script', -->
+		  <!-- 'https://connect.facebook.net/en_US/fbevents.js'); -->
+		  <!-- fbq('init', '389059184866929'); -->
+		  <!-- fbq('track', 'PageView'); -->
+		<!-- </script> -->
+		<!-- <noscript><img height="1" width="1" style="display:none" -->
+		  <!-- src="https://www.facebook.com/tr?id=389059184866929&ev=PageView&noscript=1" -->
+		<!-- /></noscript> -->
+		<!-- End Facebook Pixel Code -->
+	</head>
+	<body>
+		<div class="container">
+            <div class="row">
+                <!-- <div class="span12 banner-container"> -->
+<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+<!-- <ins class="adsbygoogle" -->
+     <!-- style="display:block" -->
+     <!-- data-ad-client="ca-pub-2093481943685202" -->
+     <!-- data-ad-slot="4845828438" -->
+     <!-- data-ad-format="auto"></ins> -->
+<!-- <script> -->
+<!-- (adsbygoogle = window.adsbygoogle || []).push({}); -->
+<!-- </script> -->
+                <!-- </div> -->
+            </div>
+			<div class="row">
+				<div class="span4">
+					<ul class="pager">
+						<li>
+							<a href="httpmethods.html"><i class="icon-step-forward"></i>متدهای HTTP </a>
+						</li>
+						<li>
+							<a href="whatisrest.html"> REST چیست؟ <i class="icon-step-backward"></i></a>
+						</li>
+					</ul>
+				</div>
+				<div class="span8">
+					<h1>راهنمای سریع RESTful</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<p dir="RTL">گذشته از اینکه یک سرویس کاملا RESTful است یا نه (بر اساس محدودیت های گفته شده). در اینجا 6 نکته برای هر چه بیشتر شبیه REST شدن گفته می شود که نتیجه قابل استفاده تر شدن و بهبود سیستم است.</p>
+					
+					<h2>برای معنا دارتر شدن سیستم ها از متد HTTP استفاده کنیم</h2>
+					
+					<p dir="RTL">کاربران API می توانند از متد HTTP جهت استفاده استفاده کنند که این موجب معنادارتر شدن request ها می شوند:</p>
+					<p dir="RTL">به صورت کلی افعال HTTP به صورت زیر است:</p>
+					<p dir="RTL"><strong>GET</strong></p>
+					<p dir="RTL">خواندن یک یا مجموعه ای از resource ها از سرور</p>
+					<p dir="RTL"><strong>PUT</strong></p>
+					<p dir="RTL">آپدیت کردن یک یا مجموعه ای از resource ها در سرور. همچنین می توان برای ساختن یک resource مورد استفاده قرار بگیرد.</p>
+					<p dir="RTL"><strong>DELETE</strong></p>
+					<p dir="RTL">یک resource خاص را پاک می کند</p>
+					<p dir="RTL"><strong>POST</strong></p>
+					<p dir="RTL">یک resource جدید بساز. اگر request ای در هیچ دسته دیگری قرار نگیرد توسط این متد مدیریت می شود.</p>
+					<p dir="RTL"><strong>نکته:</strong> متد GET نباید هیچ منبعی را تغییر دهد. این متد برای خواندن یک resource یا اندازه گیری آن استفاده می شود ولی نباید از آن برای تغییر استفاده کرد.</p>
+					
+					<h2>برای resource ها از اسامی ملموس استفاده کنید</h2>
+					<p dir="RTL">ساختن یک API خوب 80% هنر و 10% دانش است. ساختن URL ها به صورت سلسله مراتبی و معنادار با اسامی ملموس کاری هنرمندانه است. نام resource در واقع هم قسمت path در URL است (مثلا /customers/12345/orders) همانطور که می بینید فقط با نام این resource کاری که قرار است انجام دهد مشخص است.</p>
+					<p dir="RTL">چند قانون کلی را برای نام گذاری منابع ببینیم:</p>										
+					<ul dir="rtl">
+						<li dir="RTL">از identifier ها به جای query-string ها استفاده کنید. استفاده از query-string در URL برای فیلتر کردن مناسب است اما برای نامگذاری منابع خیر.
+							<p dir="RTL"><strong>&nbsp;&nbsp;&nbsp;&nbsp;انتخاب بهتر:</strong> /users/12345</p>
+							<p dir="RTL"><strong>&nbsp;&nbsp;&nbsp;&nbsp;انتخاب نامناسب:</strong> /api?type=user&amp;id=23</p>
+						</li>
+						<li dir="RTL">از ماهیت سلسله مراتبی URL به صورت معنادار استفاده کنید که به راحتی از روی آن سلسله مراتب بتوان به ساختار منابع پی برد.</li>
+						<li dir="RTL">برای نامگذاری منابع از فعل استفاده نکنید (از نام بایستی استفاده گردد). متدهای HTTP در URL نحوه کارکرد (فعل) آن را مشخص می کند.</li>
+						<li dir="RTL">از جمع اسامی برای نامگذازی منابع استفاده کنید تا URI ها برای همه متدهای HTTP معنادار باشد.
+							<p dir="RTL"><strong>&nbsp;&nbsp;&nbsp;&nbsp;پیشنهاد می شود:</strong> /customers/33245/orders/8769/lineitems/1</p>
+							<p dir="RTL"><strong>&nbsp;&nbsp;&nbsp;&nbsp;پیشنهاد نمی شود:</strong> &nbsp;/customer/33245/order/8769/lineitem/1</p>
+						</li>
+						<li dir="RTL">از ادبیات کلکسیونی در نام گذاری منابع استفاده نکنید مثلا به جای customer_list از customers استفاده کنید.</li>
+						<li dir="RTL">از حروف کوچک استفاده کنید بعضی سرورهای حساس به بزرگی و کوچکی حروف نیستند و همه را اتوماتیک کوچک در نظر می گیرند و این ممکن است مشکل سازی شود. در بین اسامی از خط تیره underscore _ یا Hyphen - &nbsp;استفاده کنید.</li>
+						<li dir="RTL">تا جایی که ممکن است URL ها کوتاه باشند با بخش های با معنی</li>
+					</ul>
+
+                    <h2>برای مشخص کردن status از کدهای پاسخ HTTP استفاده کنید</h2>
+                    <p dir="RTL">Status code مربود به پاسخ درخواست ها بخشی از مشخصات HTTP هستند. تعدادی از آنها را برای مشخص کردن شرایط مختلف می بینیم. همیشه از مشخصات HTTP به درستی استفاده کنید مثلا از status code مرتبط در پاسخ های مختلف بهره ببرید. به عنوان مثال اگر یک منبع به درستی با استفاده از متد POST ساخته می شود باید کد 201 را باز گرداند. لیست کدهای status برای HTTP در <a href="http://www.restapitutorial.ir/httpstatuscodes.html">اینجا</a>&nbsp;قابل دسترسی است.</p>
+					<p dir="RTL">کدهای status پرکاربرد HTTP از قرار زیر است:</p>					
+					<p dir="RTL"><strong>204 NO CONTENT</strong></p>
+					<p dir="RTL">نشان دهنده درخواست موفق است اما هیچ محتوایی در بدنه پاسخ وجود ندارد. معمولا برای عملیات های DELETE و PUT استفاده می شود.</p>
+					<p dir="RTL"><strong>400 BAD REQUEST</strong></p>
+					<p dir="RTL">یک ارور کلی برای زمانی که درخواست ما موجب شود که نرم افزار وارد یک وضعیت ناخواسته شود.</p>
+					<p dir="RTL"><strong>401 UNAUTHORIZED</strong></p>
+					<p dir="RTL">این ارور برای زمانی است که توکن احراز هویت یا وجود نداشته باشد یا اشتباه باشد. به طور کلی زمانی که احراز هویت authentication امکان پذیر نباشد.</p>
+					<p dir="RTL"><strong>403 FORBIDDEN</strong></p>
+					<p dir="RTL">این ارور برای زمانی است که کاربر برای انجام یک عملیات مجاز نیست یا زمانی که منبع مورد نظر به هر دلیلی در دسترس نیست.</p>
+					<p dir="RTL"><strong>404 NOT FOUND</strong></p>
+					<p dir="RTL">برای زمانی است که منبع درخواست شده یافت نشود، یا به دلیل وجود نداشتن منبع یا اگر ارور 401 و 403 اتفاق افتاده باشد و به دلایل امنیت تصمیم بگیریم این ارور را نمایش بدهیم.</p>
+					<p dir="RTL"><strong>405 METHOD NOT ALLOWED</strong></p>
+					<p dir="RTL">برای زمانی است که URL درخواست شده وجود دارد ولی متد درخواست داده شده پشتیبانی نمی شود. به عنوان مثل POST&nbsp;<em>/users/12345</em> ولی API مورد نظر ساختن منبع با این روش و متد را پشتیبانی نمی کند (یعنی نمی گذارد که ID را خود درخواست دهنده تعیین کند) در این مثال متد باستی DELETE, PUT, GET باشد.</p>
+					<p dir="RTL"><strong>409 CONFLICT</strong></p>
+					<p dir="RTL">اگر در انجام یک درخواست یک اختلال ایجاد شود مثلا درخواست پاک کردن یک منبع را بدهیم که چندین زیرمجموعه دارد (منبع مورد نظر ROOT یک درخت است) بنابراین منابع زیر مجموعه آن هم باید پاک شود ولی قابلیت CASCADE وجود نداشته باشد این ارور اتفاق می افتد. مثال دیگر می تواند این باشد که دو منبع با یک اسم بخواهیم بسازیم.</p>
+					<p dir="RTL"><strong>500 INTERNAL SERVER ERROR</strong></p>
+					<p dir="RTL">در طراحی API نباید این ارور را عمدا به کاربر برگردانیم. این ارور به عنوان یک ارور عمومی است که برای هر اختلال در سرور یا اکسپشن در نرم افزار به کاربر نمایش داده می شود.</p>		
+					
+					<h2>هر دو JSON و XML را ارایه دهید</h2>
+					<p dir="RTL">فرمت JSON همیشه ارجهیت دارد مگر اینکه در پروژه ای با استانداردهای بالا کار می کنید و قوانین ریگولاتوری از شما می خواهد که از فرمت XML هم پشتیبانی کنید. کلا می توانید از هر دو فرمت پشتیبانی کنید مگر اینکه هزینه بردار باشد. در شرایط ایده آل می توان به کاربر اجازه داد از هر کدام از آن استفاده کند، می تواند با استفاده از HTTP accept header یا با تغییر پسوند در API مثلا .xml یا .json این کار را انجام دهد.</p>
+					<p dir="RTL">اگر از XML پشتیبانی کنید یعنی باید از schema validation و namespace پشتیبانی کنید بنابراین اگر واقعا مجبور نیستید این همه پیچیدگی به برنامه اضافه نکنید. در واقع اگر از XML هم پشتیبانی می کنید باید تا حد ممکن آن را مثل JSON ساده کنید به گونه ای که تنها شامل داده و لینک باشد اگر از این پیچیده تر باشد بیش از حد هزینه بر تلقی می شود. بخاطر همین نکات هم هست که کسی دیگر از XML استفاده نمی کند.</p>
+					<p dir="RTL">توجه داشته باشید با استفاده از JSON هم اگر از قابلیت هایی مثل schema validation بخواهید، می توانید از <a href="https://json-schema.org">json-schema</a> &nbsp;استفاده کنید.</p>
+					<h2>تا می توانید منابعی ساده تر و کوچکتر استفاده کنید (اگر می توانید یک منبع را به منابعی کوچک تر تقسیم کنید حتما این کار را بکنید.)</h2>
+					<p dir="RTL">هنگام طراحی API به معماری سیستم و دیتابیس توجه خواهیم داشت و به گونه ای طراحی را انجام می دهیم. بعدها ممکن است که سرویس های مختلف طراحی شده را با هم ترکیب کنیم (به جای اینکه برای هر کاری سرویس جدیدی بسازیم) خیلی ساده یعنی بهتر است که سرویس های کوچک تر و ساده تر با API ها ساده تر و ریز تر برای تمامی دامین ها و منابع دیتابیس و معماری بسازیم و بعدا اگر به سرویس بزرگتری نیاز داشتیم از ترکیب آن ها سرویس بزرگتر فراهم می گردد. این بهتر و مهندسی تر از این است که منابع بزرگتری بسازیم و بعدا اگر به منبع ساده تری نیاز داشتیم آن را به بخش های کوچک تری تقسیم کنیم. بنابراین برای خودتان ساده تر کار کنید از منابع ساده تر و کوچکتر شروع کنید برای آن CRUD طراحی کنید. بعد می توانید از همین ها برای ساختن منابع مرتبط با use case استفاده کنید.</p>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				</div>
+			</div>
+			<hr>
+			<footer>
+				<p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+				<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+				</a>
+				<p style="text-align: justify;" dir="rtl">تحت لیسانس <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative commons</a>.</p>
+			</footer>
+		</div> <!-- /container -->
+		
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="https://www.restapitutorial.ir" style="float:right;">راهنمای REST API</a>
+					<div class="nav-collapse" style="float:right;">
+						<ul class="nav">
+							<li><a href="../index.html">خانه</a></li>
+							<li class="dropdown active" id="api-school"><a class="dropdown-toggle" data-toggle="dropdown" href="#">آموزش ها<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="whatisrest.html">REST چیست؟</a></li>
+									<li class="active"><a href="restquicktips.html">راهنمایی سریع REST</a></li>
+									<li><a href="httpmethods.html">متدهای HTTP</a></li>
+									<li><a href="restfulresourcenaming.html">نام گذاری منابع</a></li>
+									<li><a href="idempotency.html">Idempotence</a></li>
+								</ul>
+							</li>
+							<li><a href="../httpstatuscodes.html">کدهای وضعیت HTTP</a></li>
+							<li><a href="../resources.html">منابع</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+		<a href="https://github.com/amirjj/RestApiTutorial.ir"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 1050; transform: rotate(-90deg);" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+	</body>
+</html>
