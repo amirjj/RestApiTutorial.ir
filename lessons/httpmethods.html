@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>متد های HTTP</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="HTTP methods tutorial on how to use them for RESTful API or Web Service.">
+		<meta name="author" content="Todd Fredrich, Pearson eCollege">
+		<!-- Le styles -->
+		<link href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				direction: rtl;
+				text-align:right;
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+            .banner-container {
+            }
+			.navbar .nav>li {
+				display: block;
+				float: right;
+			}
+			.navbar .nav>ul {
+				display: block;
+				float: right;
+			}
+			@font-face {
+			   font-family: Sahel;
+			   src: url(../static/font/Sahel.woff);
+			}
+
+			* {
+			   font-family: Sahel;
+			}
+			.pager {
+				direction: rtl;
+			}
+			
+		</style>
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!-- <script type="text/javascript"> -->
+
+		  <!-- var _gaq = _gaq || []; -->
+		  <!-- _gaq.push(['_setAccount', 'UA-31328878-1']); -->
+		  <!-- _gaq.push(['_trackPageview']); -->
+
+		  <!-- (function() { -->
+		    <!-- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; -->
+		    <!-- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; -->
+		    <!-- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); -->
+		  <!-- })(); -->
+
+		<!-- </script> -->
+		<!-- Facebook Pixel Code -->
+		<!-- <script> -->
+		  <!-- !function(f,b,e,v,n,t,s) -->
+		  <!-- {if(f.fbq)return;n=f.fbq=function(){n.callMethod? -->
+		  <!-- n.callMethod.apply(n,arguments):n.queue.push(arguments)}; -->
+		  <!-- if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; -->
+		  <!-- n.queue=[];t=b.createElement(e);t.async=!0; -->
+		  <!-- t.src=v;s=b.getElementsByTagName(e)[0]; -->
+		  <!-- s.parentNode.insertBefore(t,s)}(window, document,'script', -->
+		  <!-- 'https://connect.facebook.net/en_US/fbevents.js'); -->
+		  <!-- fbq('init', '389059184866929'); -->
+		  <!-- fbq('track', 'PageView'); -->
+		<!-- </script> -->
+		<!-- <noscript><img height="1" width="1" style="display:none" -->
+		  <!-- src="https://www.facebook.com/tr?id=389059184866929&ev=PageView&noscript=1" -->
+		<!-- /></noscript> -->
+		<!-- End Facebook Pixel Code -->
+	</head>
+	<body>
+		<div class="container">
+            <div class="row">
+                <div class="span12 banner-container">
+<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+<!-- <!-- Rest API Tutorial --> 
+<!-- <ins class="adsbygoogle" -->
+     <!-- style="display:block" -->
+     <!-- data-ad-client="ca-pub-2093481943685202" -->
+     <!-- data-ad-slot="4845828438" -->
+     <!-- data-ad-format="auto"></ins> -->
+<!-- <script> -->
+<!-- (adsbygoogle = window.adsbygoogle || []).push({}); -->
+<!-- </script> -->
+                </div>
+            </div>
+			<div class="row">
+				
+				<div class="span4">
+					<ul class="pager">
+						<li>
+							<a href="restfulresourcenaming.html"><i class="icon-step-forward"></i>نامگذاری منابع </a>
+						</li>
+						<li>
+							<a href="restquicktips.html"> راهنمای سریع<i class="icon-step-backward"></i></a>
+						</li>
+					</ul>
+				</div>
+				<div class="span8">
+					<h1>استفاده از متدهای HTTP در سرویس های RESTful</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<p style="text-align: justify;" dir="rtl">استفاده از متدهای HTTP موجب می شود تا حد بسیار زیادی محدودیت "رابط یکسان و هماهنگ" را عملی کنیم و همچنین در اصل "استفاده از اسم برای منابع" به ما کمک می کند. متدهای اصلی و پرتکرار HTTP برابر است با GET, POST, PUT, PATCH و DELETE. همینطور که می بینید با همین ها می توان برای یک منبع اصل CRUD را عملی کرد (create, read, update, delete). متدهای دیگری هم وجود دارد که کم استفاده تر هستند که در بین آنها OPTIONS و HEAD بیشتر استفاده می شوند.</p>
+					<p dir="RTL">در جدول زیر پاسخ های پیشنهادی برای درخواست های HTTP نشان داده می شود:</p>
+					
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>HTTP Verb</th>
+								<th>CRUD</th>
+								<th>Entire Collection (e.g. /customers)</th>
+								<th>Specific Item (e.g. /customers/{id})</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>POST</td>
+								<td>Create</td>
+								<td>201 (Created), 'Location' header with link to /customers/{id} containing new ID.</td>
+								<td>404 (Not Found), 409 (Conflict) if resource already exists..</td>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>Read/Retrieve</td>
+								<td>200 (OK), list of customers. Use pagination, sorting and filtering to navigate big lists.</td>
+								<td>200 (OK), single customer. 404 (Not Found), if ID not found or invalid.</td>
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>Update/Replace</td>
+								<td>405 (Method Not Allowed), unless you want to update/replace every resource in the entire collection.</td>
+								<td>200 (OK) or 204 (No Content).  404 (Not Found), if ID not found or invalid.</td>
+							</tr>
+							<tr>
+								<td>PATCH</td>
+								<td>Update/Modify</td>
+								<td>405 (Method Not Allowed), unless you want to modify the collection itself.</td>
+								<td>200 (OK) or 204 (No Content).  404 (Not Found), if ID not found or invalid.</td>
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>Delete</td>
+								<td>405 (Method Not Allowed), unless you want to delete the whole collection—not often desirable.</td>
+								<td>200 (OK).  404 (Not Found), if ID not found or invalid.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<p dir="RTL">در ادامه جزئیات بیشتری در مورد متدهای HTTP می بینیم.</p>
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#post" data-toggle="tab">POST</a></li>
+						<li><a href="#get" data-toggle="tab">GET</a></li>
+						<li><a href="#put" data-toggle="tab">PUT</a></li>
+						<li><a href="#patch" data-toggle="tab">PATCH</a></li>
+						<li><a href="#delete" data-toggle="tab">DELETE</a></li>
+					</ul>
+					<div id="methodTabContent" class="tab-content">
+						<div class="tab-pane fade in active" id="post">
+							<p dir="RTL">متد POST پرکاربردترین متدی برای ساختن یک منبع است. معمولا از این متد برای ساختن یک منبع زیر مجموعه منبع دیگر (منبع پدر) مورد استفاده قرار می گیرد. به بیان دیگر وقتی با استفاده از POST و منبع پدر، یک منبع جدید می سازیم خود سرویس اتصال منبع پچه به منبع پدر را مدیریت می کند با استفاده از ID در URI.</p>
+							<p dir="RTL">در صورتی که درخواست موفقیت آمیز باشد، کد status 201 را باز می گردانیم. یعنی header باز گردانده شده شامل لینک منبع ساخته شده جدید همراه با کد status 201 خواهد بود.</p>
+							<p dir="RTL">POST نه امن نه idempotent (خنثی تکراری) است بنابراین برای استفاده در درخواست هایی توصیه می شود که idempotent نباشند. ارسال چندین POST تکراری موجب می شود که چندین منبع تکراری ساخته شود.</p>
+							<p dir="RTL"><strong>مثال:</strong></p>
+							<p dir="RTL">POST http://www.example.com/customers</p>
+							<p dir="RTL">POST http://www.example.com/customers/12345/orders </p>
+						</div>
+						<div class="tab-pane fade" id="get">							
+							<p style="text-align: justify;" dir="RTL">این متد برای خواندن یک representation از یک منبع است. در شرایط خوب این متد یک پاسخ با فرمت XML یا JSON با استفاده از کد 200 (OK) باز می گرداند. در شرایطی که اروری اتفاق بیوفتد پاسخ های 404 (NOT FOUND) یا 400 (BAD REQUEST) خواهید داشت.</p>
+							<p style="text-align: justify;" dir="RTL">بر اساس طراحی HTTP درخواست GET در کنار HEAD برای خواندن منبع هستند نه برای تغییر آن بنابراین در چنین شرایطی امن است. یعنی با فراخوانی آن ریسکی تخریب یا تغییر داده وجود ندارد همچنین هیچ فرقی ندارد که آن را 1 بار یا 10 بار فراخوانی کنیم و با فراخوانی بیشتر داده خراب یا منبع تکراری ساخته نمی شود. به این متد idempotent می گوییم یعنی با چندین بار فراخوانی یک درخواست یکسان با این متد نتیجه یکسانی خواهیم گرفت در مقایسه با فراخوانی یک بار آن و اگر یک درخواست GET را 100 با تکرار کنیم منبع تغییری نمی کند.</p>
+							<p style="text-align: justify;" dir="RTL">کارهای ناامن را با GET انجام ندهید. این متد هیچ گاه نباید داده ای در سرور را تغییر دهد.</p>
+							<p dir="RTL"><strong>مثال:</strong></p>
+							<p dir="RTL">GET http://www.example.com/customers/12345</p>
+							<p dir="RTL">GET http://www.example.com/customers/12345/orders</p>
+							<p dir="RTL">GET http://www.example.com/buckets/sample</p>
+						</div>
+						<div class="tab-pane fade" id="put">
+							<p style="text-align: justify;" dir="RTL">این متد برای آپدیت کردن یک منبع به کار می رود. استفاده از این متد با URI منبع و بنده درخواست شامل presentation جدید از منبع مورد نظر صورت می پذیرد.</p>
+							<p style="text-align: justify;" dir="RTL">همچنین با استفاده از متد می توان یک منبع جدید ساخت در شرایطی که ID به جای سرور توسط کلاینت انتخاب شود به بیان دیگر استفاده از PUT در درخواستی که ID استفاده شده در URI آن شاخص هیچ منبعی نیست و هیچ منبعی با این ID وجود ندارد. استفاده اینگونه از این متد به نظر کمی گیج کننده می آید اما روش بهینه ای محسوب می شود.</p>
+							<p style="text-align: justify;" dir="RTL">به جای این روش استفاده از PUT می توان از POST استفاده کرد به گونه ای که ID مد نظر کلاینت را در representation جدید موجود د بدنه قرار داد، به جای قرار دادن آن در URI.</p>
+							<p style="text-align: justify;" dir="RTL">در یک درخواست موفق کد 200 بازگردانده میشود (204 در شرایطی که هیچ محتوایی در بنده پاسخ برگردانده نشود). اگر از PUT برای ساختن یک منبع استفاده می کنید در یک درخواست موفق از 201 استفاده کنید. قرار دادن بنده در پاسخ اختیاری است که در صورت استفاده موجب می شود پهنای باند بیشتری نیز مصرف شود. وقتی از این متد برای ساختن یک منبع استفاده می کنیم نیاز نیست در پاسخ یک لینک بازگردانیم چرا که خود کلاینت ID را انتخاب کرده و مقدار آن را میداند.</p>
+							<p style="text-align: justify;" dir="RTL">PUT یک متد امن محسوب نمی شود چون state سرور را تغییر می دهد. این متد idempotent است یعنی اگر یک منبع را توسط این متد تغییر دهیم یا بسازیم و بعد از آن چندین بار این فراخوانی را تکرار کنیم منبع موجود در سرور نسبت به دفعه اول تغییری نمی کند و state آن ها ثابت می ماند.</p>
+							<p style="text-align: justify;" dir="RTL">ولی اگر در یک API این متد استفاده شود و در هر فراخوانی یک شمارنده افزایش یابد دیگر استفاده از این متد idempotent نیست و اگر در چنین شرایطی قرار داریم بد نیست که در مستندات به idempotent نبودن آن اشاره کنیم. در کل پیشنهاد می شود که PUT را همواره idempotent نگه دارید و در چنین شرایطی از POST استفاده کنید.</p>
+							<p dir="RTL"><strong>مثال:</strong></p>
+							<p dir="RTL">PUT http://www.example.com/customers/12345</p>
+							<p dir="RTL">PUT http://www.example.com/customers/12345/orders/98765</p>
+							<p dir="RTL">PUT http://www.example.com/buckets/secret_stuff</p>
+						</div>
+						<div class="tab-pane fade" id="patch">
+						
+							<p style="text-align: justify;" dir="RTL">این متد برای تغییر دادن منابع مورد استفاده قرار می گیرد. این متد تنها به تغییری که قرار است داده شود نیاز دارد نه خود منبع. این متد مانند PUT است با این تفاوت که مجموعه تغییراتی که قرار است بر روی یک منبع داده شود را به صورت یک سری دستور العمل در اختیار دارد. این یعنی بدنه PATCH نباید تنها دارنده منبع تغییر داده شده باشد بلکه بایستی دارای یک نوع زبان برای این تغییر باشد مثل JSON و XML.</p>
+							<p style="text-align: justify;" dir="RTL">این متد نه امن است نه idempotent. اما می توان با روش هایی کاری کرد که استفاده از این متد idempotent شود تا اگر چندین متد PATCH همزمان اجرا شد با هم تداخلی ایجاد نکند. تداخل متد PATCH می تواند خطرناک تر از تداخل در متد PUT باشد چرا که گاهی استفاده از PATCH نیاز دارد به نقطه شروع شناخته شده و مشخصی دارد و این ناپایداری را افزایش می دهد. کلاینتی که از این متد استفاده می کند باید شرایط خاص را شرط ها مدیریت کند مثلا اگر از آخرین دسترسی به منبع مقدار آن تغییر کرده بود متد PATCH اجرا نشود (fail شود( .مثلا کلاینت می تواند از ETag در شرط if-match هدر درخواست PATCH استفاده کند.</p>
+							<p style="text-align: justify;" dir="RTL"><strong>مثال:</strong></p>
+							<p style="text-align: justify;" dir="RTL">PATCH http://www.example.com/customers/12345</p>
+							<p style="text-align: justify;" dir="RTL">PATCH http://www.example.com/customers/12345/orders/98765</p>
+							<p style="text-align: justify;" dir="RTL">PATCH http://www.example.com/buckets/secret_stuff</p>						
+						</div>
+						<div class="tab-pane fade" id="delete">
+							<p style="text-align: justify;" dir="RTL">این متد همانطور که از اسمش مشخصاس برای پاک کردن یک منبع استفاده می شود.</p>
+							<p style="text-align: justify;" dir="RTL">در صورت استفاده موفق کد 200 (OK) را باز می گرداند، در بدنه پاسخ ممکن است که منبع پاک شده را نیز باز گرداند. در صورتی که در بنده پاسخ هیچ محتوایی را باز نگرداند کد 204 (NO CONTENT) را به عنوان کد status خواهیم داشت. بنابرای یا 204 بدون بدنه یا 200 همراه با بنده پاسخ با فرمت JSON خواهیم داشت.</p>
+							<p style="text-align: justify;" dir="RTL">DELETE یک متد idempotent است. همچنین اگر برای بار دوم بخواهیم یک منبع را پاک کنیم کد 404 (NOT FOUND) دریافت خواهیم کرد چراکه دفعه اول پاک شده است. اگر این متد در فراخوانی یک شمارنده را کاهش دهد دیگر نمی توانیم بگوییم که این متد idempotent است.</p>
+							<p style="text-align: justify;" dir="RTL">همانطور که گفته شد اگر برای بار دوم یک منبع را بخواهیم با این متد پاک کنیم کد 404 خواهیم گرفت بعضی ها نظرشان این است که بخاطر این تغییر دیگر نمی توان گفت که این متد idempotent است با این که هر چند بار آن را تکرار کنیم باز همان اتفاقی می افتد که بار اول می فتد (از نظر پاک شدن منبع و این واقعیت که هر چند بار بخواهیم یک منبع را پاک کنیم فرقی ندارد چرا که منبع از اول پاک شده است)</p>
+							<p style="text-align: justify;" dir="RTL"><strong>مثال:</strong></p>
+							<p style="text-align: justify;" dir="RTL">DELETE http://www.example.com/customers/12345</p>
+							<p style="text-align: justify;" dir="RTL">DELETE http://www.example.com/customers/12345/orders</p>
+							<p style="text-align: justify;" dir="RTL">DELETE http://www.example.com/bucket/sample</p>
+							<p style="text-align: justify;" dir="RTL">&nbsp;</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<footer>
+				<p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+				<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+				</a>
+				<p style="text-align: justify;" dir="rtl">تحت لیسانس <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative commons</a>.</p>
+			</footer>
+		</div> <!-- /container -->
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="https://www.restapitutorial.ir" style="float:right;">راهنمای REST API</a>
+					<div class="nav-collapse" style="float:right;">
+						<ul class="nav">
+							<li><a href="../index.html">خانه</a></li>
+							<li class="dropdown active" id="api-school"><a class="dropdown-toggle" data-toggle="dropdown" href="#">آموزش ها<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="whatisrest.html">REST چیست؟</a></li>
+									<li><a href="restquicktips.html">راهنمایی سریع REST</a></li>
+									<li class="active"><a href="httpmethods.html">متدهای HTTP</a></li>
+									<li><a href="restfulresourcenaming.html">نام گذاری منابع</a></li>
+									<li><a href="idempotency.html">Idempotence</a></li>
+								</ul>
+							</li>
+							<li><a href="../httpstatuscodes.html">کدهای وضعیت HTTP</a></li>
+							<li><a href="../resources.html">منابع</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+		<a href="https://github.com/amirjj/RestApiTutorial.ir"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 1050; transform: rotate(-90deg);" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+	</body>
+</html>
