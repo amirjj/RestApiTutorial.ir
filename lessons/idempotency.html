@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>What is Idempotency?</title>
+		<title>Idempotency چیست?</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Idempotency or Idempotence, definition in a non-academic way, specifically in REST APIs">
 		<meta name="author" content="Todd Fredrich, Pearson eCollege">
@@ -89,23 +89,23 @@
                 </div>
             </div>
 			<div class="row">
-				<div class="span7">
-					<h1>What Is Idempotence?</h1>
-				</div>
 				<div class="span5">
 					<ul class="pager">
 						<li>
-							<a href="restfulresourcenaming.html"><i class="icon-step-backward"></i> Resource Naming</a>
+							<a href="../httpstatuscodes.html"><i class="icon-step-forward"></i> کدهای وضعیت HTTP </a>
 						</li>
 						<li>
-							<a href="../httpstatuscodes.html">HTTP Status Codes <i class="icon-step-forward"></i></a>
+							<a href="restfulresourcenaming.html"> نامگذاری منابع <i class="icon-step-backward"></i></a>
 						</li>
 					</ul>
+				</div>
+				<div class="span7">
+					<h1>Idempotence چیست؟</h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="span12">
-					<i class="icon-film"></i> <a href="#" data-toggle="collapse" data-target="#video1">Hide/Show Video</a>
+					<i class="icon-film"></i> <a href="#" data-toggle="collapse" data-target="#video1">نمایش/مخفی کردن ویدئو</a>
 				</div>
 			</div>
 			<div id="video1" class="row collapse in">
@@ -118,10 +118,10 @@
 					<h2>Idempotence</h2>
 				</div>
 				<div class="span12">
-					<p>Idempotence is a funky word that often hooks people. Idempotence is sometimes a confusing concept, at least from the academic definition.</p>
-					<p>From a RESTful service standpoint, for an operation (or service call) to be idempotent, clients can make that same call repeatedly while producing the same result. In other words, making multiple identical requests has the same effect as making a single request. Note that while idempotent operations produce the same result on the server (no side effects), the response itself may not be the same (e.g. a resource's state may change between requests).</p>
-					<p>The PUT and DELETE methods are defined to be idempotent. However, there is a caveat on DELETE. The problem with DELETE, which if successful would normally return a 200 (OK) or 204 (No Content), will often return a 404 (Not Found) on subsequent calls, unless the service is configured to "mark" resources for deletion without actually deleting them. However, when the service actually deletes the resource, the next call will not find the resource to delete it and return a 404. However, the state on the server is the same after each DELETE call, but the response is different.</p>
-					<p>GET, HEAD, OPTIONS and TRACE methods are defined as safe, meaning they are only intended for retrieving data.  This makes them idempotent as well since multiple, identical requests will behave the same.</p>
+					<p dir="RTL">برای Idempotency واقع ترجمه مناسبی نمیابم. اگر بخواهم توضیح ساده ای بیان کنم: فرض کنید یک عملیات ریاضی را هر بار بر روی یک منبع اجرا کنیم همواره نتیجه یکسانی به ما می دهد مثلا عملیات ریاضی ضرب در 1 می دانیم که اگر یک عدد را هزار بار هم در 1 ضرب کنیم باز هم نتیجه یکسانی به ما می دهد، به این عملیات با این خصوصیت idempotent می گویند. حال در RESTful به عملیات idempotent می گویند که هر چند بار بر روی یک منبع اجرا شود باز هم نتیجه یکسانی بدهد مثلا در شرایطی که کسی دیتای کاربر را تغییر ندهد GET /user/1234 یک عملیات idempotent است چرا که هر باید همان مقدار یکسان را باز می گرداند. عملیات idempotent همینطور که همواره مقدار یکسانی به ما نشان می دهد همواره تغییر و تاثیر یکسانی هم در سرور می گذارد. متد های PUT و DELETE هم idempotent هستند البته بر روی DELETE اختلاف نظر وجود دارد چرا که اولین بار که یک منبع پاک شود مقدار 200 OK بازگردانده می شود اما دفعات بعدی مقدار 404 Not Found بازگردانده می شود مگر اینکه عملیات DELETE در واقع انجام نشود و فقط منبع برای پاک شدن mark شود. در این حالت ممکن است پاسخ سرور همیشه نسبت به پاک کردن یک منبع 200 OK باشد.</p>
+					<p dir="RTL">متد های GET, HEAD, OPTIONS و TRACE متدهای امن هستند چراکه تنها برای گرفتن دیتا استفاده می شود و هربار هم سرور نتیجه یکسان خواهد داد بنابراین idempotent هستند.</p>
+					<p dir="RTL">&nbsp;</p>
+					<p>&nbsp;</p>				
 				</div>
 			</div>
 			<hr>
@@ -143,11 +143,11 @@
 							<li><a href="../index.html">خانه</a></li>
 							<li class="dropdown active" id="api-school"><a class="dropdown-toggle" data-toggle="dropdown" href="#">آموزش ها<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li class="active"><a href="whatisrest.html">REST چیست؟</a></li>
+									<li><a href="whatisrest.html">REST چیست؟</a></li>
 									<li><a href="restquicktips.html">راهنمایی سریع REST</a></li>
 									<li><a href="httpmethods.html">متدهای HTTP</a></li>
 									<li><a href="restfulresourcenaming.html">نام گذاری منابع</a></li>
-									<li><a href="idempotency.html">Idempotence</a></li>
+									<li class="active"><a href="idempotency.html">Idempotence</a></li>
 								</ul>
 							</li>
 							<li><a href="../httpstatuscodes.html">کدهای وضعیت HTTP</a></li>
